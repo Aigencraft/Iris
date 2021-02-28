@@ -26,7 +26,7 @@ public class CNG
 	private double scale;
 	private double bakedScale;
 	private double fscale;
-	private boolean trueFracturing = false;
+	private boolean trueFracturing = true;
 	private KList<CNG> children;
 	private CNG fracture;
 	private NoiseGenerator generator;
@@ -340,7 +340,7 @@ public class CNG
 				double f1 = noscale ? 0 : (fracture != null ? (fracture.noise(dim[0], dim[1]) - 0.5) * fscale : 0D);
 				double f2 = noscale ? 0 : (fracture != null ? (fracture.noise(dim[1], dim[0]) - 0.5) * fscale : 0D);
 				double x = dim[0] + f1;
-				double y = dim[1] + -f1;
+				double y = dim[1] + f2;
 				double z = 0D;
 				return generator.noise(x * scale, y * scale, z * scale) * opacity;
 			}
